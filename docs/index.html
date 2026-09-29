@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devports | Localhost Mission Control</title>
+    <style>
+        :root {
+            --bg: #09090b;
+            --term-bg: #18181b;
+            --text: #a1a1aa;
+            --white: #fafafa;
+            --green: #4ade80;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+        p.subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+        .terminal {
+            background-color: var(--term-bg);
+            border-radius: 8px;
+            border: 1px solid #27272a;
+            overflow: hidden;
+            text-align: left;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+            margin-bottom: 50px;
+        }
+        .terminal-header {
+            background-color: #27272a;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot.red { background-color: #ef4444; }
+        .dot.yellow { background-color: #eab308; }
+        .dot.green { background-color: #22c55e; }
+        
+        .terminal-body {
+            padding: 24px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .cmd { color: var(--white); }
+        .prompt { color: var(--green); font-weight: bold; }
+        .comment { color: #71717a; }
+        
+        .buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--bg);
+        }
+        .btn-primary:hover {
+            background-color: #e4e4e7;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 1px solid #3f3f46;
+            color: var(--white);
+        }
+        .btn-outline:hover {
+            border-color: var(--white);
+            background-color: #27272a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>devports</h1>
+        <p class="subtitle">A beautiful TUI for managing local dev ports.</p>
+        
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="terminal-body">
+                <div><span class="prompt">$</span> <span class="cmd">go install github.com/selomrani/devports@latest</span></div>
+                <div class="comment"># Downloading and compiling...</div>
+                <br>
+                <div><span class="prompt">$</span> <span class="cmd">devports</span></div>
+                <div>Scanning active TCP ports...</div>
+                <br>
+                <div style="color: var(--white);">
+                    PORT   PID     PROCESS     MEMORY<br>
+                    3000   41829   node        142MB<br>
+                    5173   39012   vite        85MB<br>
+                    8000   51201   python      210MB<br>
+                    5432   1204    postgres    64MB
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="https://github.com/selomrani/devports" class="btn btn-primary">
+                View Source on GitHub
+            </a>
+            <a href="https://github.com/selomrani/devports/releases/tag/v1.0.0" class="btn btn-outline">
+                Download v1.0.0
+            </a>
+        </div>
+    </div>
+</body>
+</html>
